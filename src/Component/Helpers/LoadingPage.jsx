@@ -1,7 +1,7 @@
 
 function LoadingPage({ text }) {
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-[#a59b9b39]">
+    <div className="fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-[#a59b9b39]">
       {/* CARD */}
       <div className="w-[145px] h-[116px] bg-white rounded-[4px] flex flex-col items-center justify-center gap-4">
         

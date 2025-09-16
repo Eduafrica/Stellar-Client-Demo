@@ -1,16 +1,9 @@
-import { useState } from "react"
 import { truncateText } from "../../Utils/utils"
-import CourseInfoScreen from "./CourseInfoScreen"
 
-function CourseCard({ data }) {
+function CourseCard({ data, setSelectedCourse }) {
   
-  //selected course
-  const [ selectedCourse, setSelectedCourse ] = useState('')
-
-  if(selectedCourse) return <CourseInfoScreen selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} />
-
     return (
-        <div onClick={() => setSelectedCourse(data?.CourseId)} className="flex flex-col gap-[10px] font-poppins w-[283px] overflow-hidden rounded-[8px] shadow-2xs">
+        <div onClick={() => setSelectedCourse(data?.courseId)} className="flex flex-col gap-[10px] font-poppins w-[283px] overflow-hidden rounded-[8px] shadow-2xs cursor-pointer hover:scale-[1.05] duration-500 transition-all">
             <img className="w-full h-[124px] object-center" src={data?.image} />
 
             <div className="flex flex-col gap-2 p-4">

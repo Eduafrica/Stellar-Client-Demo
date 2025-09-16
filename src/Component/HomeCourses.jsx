@@ -6,9 +6,8 @@ import CourseSlider from './CourseSlider'
 import Spinner from './Helpers/Spinner'
 import CategoriesCard from './CategoriesCard'
 import { truncateText } from '../Utils/utils'
-import CourseInfoScreen from './Helpers/CourseInfoScreen'
 
-function HomeCourses() {
+function HomeCourses({ setSelectedCourse }) {
   const { data, isFetching } = useFetchCategories() 
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
@@ -49,10 +48,6 @@ function HomeCourses() {
   const { data: inDemandCourseData, isFetching: isFetchingInDemandCourse } = useFetchCourse()
   const inDemandCourses = inDemandCourseData?.data?.courses || []
 
-  //selected course
-  const [ selectedCourse, setSelectedCourse ] = useState('')
-
-  if(selectedCourse) return <CourseInfoScreen selectedCourse={selectedCourse} setSelectedCourse={setSelectedCourse} />
   return (
     <div className="padx bg-cream min-h-screen">
       <div className="flex flex-col items-center justify-center font-poppins overflow-x-hidden w-full">
@@ -120,7 +115,7 @@ function HomeCourses() {
                     isFetchingCourses ? (
                         <Spinner />
                     ) : (
-                        <CourseSlider data={courses} />
+                        <CourseSlider setSelectedCourse={setSelectedCourse} data={courses} />
                     )
                 }
             </div>
@@ -136,7 +131,7 @@ function HomeCourses() {
                             <Spinner />
                         </div>
                     ) : (
-                        <CourseSlider data={popularCourses} />
+                        <CourseSlider setSelectedCourse={setSelectedCourse} data={popularCourses} />
                     )
                 }
             </div>
@@ -163,7 +158,7 @@ function HomeCourses() {
                     isFetchingCareerPathCourse ? (
                         <Spinner />
                     ) : (
-                        <CourseSlider data={careerPathCourses} />
+                        <CourseSlider setSelectedCourse={setSelectedCourse} data={careerPathCourses} />
                     )
                 }
             </div>
@@ -202,7 +197,7 @@ function HomeCourses() {
                             <Spinner />
                         </div>
                     ) : (
-                        <CourseSlider data={inDemandCourses} />
+                        <CourseSlider setSelectedCourse={setSelectedCourse} data={inDemandCourses} />
                     )
                 }
             </div>

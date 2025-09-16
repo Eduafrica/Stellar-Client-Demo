@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import LogoImg  from '../../assets/images/logo.png'
 import { IoCloseOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -7,11 +7,15 @@ import { notify } from '../../Utils/toast';
 import { useEffect } from 'react';
 import { validatePassword } from '../../Utils/utils';
 import LoadingPage from '../Helpers/LoadingPage';
+import { studentRegister } from '../../Helpers/api';
+import useUserStore from '../../store/userStore';
 
 function RegisterCard() {
+    const { setUser } = useUserStore()
     const [ formData, setFormData ] = useState({})
     const [ showPassword, setShowPassword ] = useState(false)
     const [ loading, setLoading ] = useState(false)
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value })
@@ -32,7 +36,16 @@ function RegisterCard() {
         try {
             setLoading(true)
 
-            //const res = await
+            const res = await studentRegister(formData)
+
+            if(res.success) {
+                notify('success', res.message)
+                //store user data here
+                setUser(res.data)
+                navigate('/')
+            } else {
+                notify('error', res.message || 'Unable to register account')
+            }
         } catch (error) {
             
         } finally {
@@ -42,6 +55,7 @@ function RegisterCard() {
 
   return (
     <div className="w-[80%] border-[1px] border-black-200 flex flex-col items-center justify-center gap-[10px] p-[10px]">
+        { loading && <LoadingPage /> }
         <div className="flex flex-[20px] w-[80%]">
             <div className="flex flex-col gap-[18px] w-full items-center justify-center">
 

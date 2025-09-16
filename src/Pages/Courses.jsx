@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import PageLayout from './PageLayout'
 import { useNavigate, useLocation } from 'react-router'
 import { useFetchCategories, useFetchCourse } from '../Helpers/fetch'
@@ -6,7 +6,7 @@ import CoursesCard from '../Component/CoursesCard'
 import Spinner from '../Component/Helpers/Spinner'
 import YourLearningPatner from '../Component/YourLearningPatner'
 
-function Courses() {
+function Courses({ setSelectedCourse }) {
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -112,7 +112,7 @@ function Courses() {
                         </div>
                     ) : (
                         <div className="mt-[6rem] flex items-center justify-center">
-                            <CoursesCard data={courses} />
+                            <CoursesCard setSelectedCourse={setSelectedCourse} data={courses} />
                         </div>
                     )
                 }
@@ -121,12 +121,12 @@ function Courses() {
         </div>
       </div>
 
-                  {/**YOUR LEARNING PATNER */}
-            <div className="padx bg-white">
-                <div className="py-[96px]">
-                    <YourLearningPatner />
-                </div>
+        {/**YOUR LEARNING PATNER */}
+        <div className="padx bg-white">
+            <div className="py-[96px]">
+                <YourLearningPatner />
             </div>
+        </div>
     </PageLayout>
   )
 }

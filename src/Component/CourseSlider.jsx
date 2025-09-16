@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import CourseCard from "./Helpers/CourseCard";
 
 
-function CourseSlider({ data }) {
+function CourseSlider({ data, setSelectedCourse }) {
   const courseData = data || [];
 
   const containerRef = useRef(null);
@@ -73,7 +73,7 @@ function CourseSlider({ data }) {
         <div className="flex gap-6 px-6 py-2">
           {courseData?.map((item, idx) => (
             <div key={idx} className="flex-shrink-0">
-              <CourseCard data={item} />
+              <CourseCard data={item} setSelectedCourse={setSelectedCourse} />
             </div>
           ))}
           {/* Add extra spacing at the end to prevent cutoff */}

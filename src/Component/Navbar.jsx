@@ -2,8 +2,10 @@ import LogoImg from '../assets/images/logo.png'
 import { AiOutlineMore } from "react-icons/ai";
 import { links } from '../data/links';
 import { Link, useLocation } from 'react-router';
+import useUserStore from '../store/userStore';
 
 function Navbar() {
+    const { user } = useUserStore()
     const menuLinks = links
     const loc = useLocation()
     const pathName = loc.pathname.split('/')[1]
@@ -25,10 +27,16 @@ function Navbar() {
             }
         </div>
 
-        <div className="flex items-center gap-[21px]">
-            <Link to='/student' className='btn2 border-primary text-primary'>Sign up</Link>
-            <Link to='/student/login' className='btn'>Log in</Link>
-        </div>
+        {
+            user ? (
+                <div className="">Hello, {user?.displayName || user?.name}</div>
+            ) : (
+                <div className="flex items-center gap-[21px]">
+                    <Link to='/student' className='btn2 border-primary text-primary'>Sign up</Link>
+                    <Link to='/student/login' className='btn'>Log in</Link>
+                </div>
+            )
+        }
 
     </div>
   )
