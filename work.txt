@@ -1,0 +1,24 @@
+create this in tailwindcss and react.js
+make it as exact as possible and responsive as possible
+the amount and the wallet address should be at the center the wallet address should be clickable then when clicked it should be copied, it should also be in a white background with [#00BF63] as the border color , the add money buttons should be [#00BF63] in color, it should also be in the center
+the data table, the tab should be [#00BF63] in color for the tab to be switching, the all, pending, successful, failed, implement the necessary icons using react icons
+make the table to be very similar to the image all the color used, the background colors
+
+make the data fluid, assuming it is being called from an api and this is the endpoint response
+{
+  "success": true,
+  "data": {
+    "categories": [
+      {
+        "_id": "64d2f0a91e7c6a2e9b123456",
+        "name": "Programming",
+        "slug": "programming"
+      }
+    ],
+    "total": 42,
+    "page": 1,
+    "limit": 10,
+    "pages": 5
+  }
+}
+make it as exact as possible
