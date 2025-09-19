@@ -77,6 +77,7 @@ function Wallet({ setSelectedCourse }) {
   //apis
   const [ loading, setLoading ] = useState(false)
   const handleFundWallet = async () => {
+    if(balance > 10000) return notify('info', 'Account balance already exceeds 10000 minimium balance')
     if(loading) return
     try {
         setLoading(true)
