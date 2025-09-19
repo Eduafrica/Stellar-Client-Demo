@@ -7,6 +7,14 @@ import Home from "./Pages/Home"
 import Courses from "./Pages/Courses"
 import { useEffect, useState } from "react"
 import CourseInfoScreen from "./Component/Helpers/CourseInfoScreen"
+import MyCourses from "./Pages/Student/MyCourses"
+import Wallet from "./Pages/Wallet"
+import Notification from "./Pages/Notification"
+import InstructorHome from "./Pages/Instructor/InstructorHome"
+import InstructorLogin from "./Pages/Instructor/InstructorLogin"
+import InstructorRegister from "./Pages/Instructor/InstructorRegister"
+import InstructorCourses from "./Pages/Instructor/InstructorCourses"
+import NewCourse from "./Pages/Instructor/NewCourse"
 
 function App() {
   //selected course
@@ -31,7 +39,16 @@ function App() {
                 <Route path="/student" element={<StudentGetStarted />} />
                 <Route path="/student/register" element={<StudentRegister />} />
                 <Route path="/student/login" element={<StudentLogin />} />
+                <Route path="/my-courses" element={<MyCourses setSelectedCourse={setSelectedCourse} />} />
+                <Route path="/wallet" element={<Wallet setSelectedCourse={setSelectedCourse} />} />
+                <Route path="/notifications" element={<Notification setSelectedCourse={setSelectedCourse} />} />
 
+                <Route path="/instructor" element={<InstructorHome setSelectedCourse={setSelectedCourse} />} />
+                <Route path="/instructor/register" element={<InstructorRegister setSelectedCourse={setSelectedCourse} />} />
+                <Route path="/instructor/login" element={<InstructorLogin setSelectedCourse={setSelectedCourse} />} />
+                <Route path="/instructor-courses" element={<InstructorCourses setSelectedCourse={setSelectedCourse} />} />
+                
+                <Route path="/new-course" element={<NewCourse setSelectedCourse={setSelectedCourse} />} />
 
             </Routes>
         </BrowserRouter>

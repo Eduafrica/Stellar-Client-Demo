@@ -28,7 +28,7 @@ function GetStarted() {
                     </div>
 
                     <div className="text-[12px] text-text-secondary font-medium">
-                        Are you an instructor or organization? <Link to='/instructor/register' className='text-primary'>Go here</Link>
+                        Are you an instructor or organization? <Link to='/' className='text-primary'>Go here</Link>
                     </div>
                     
                 </div>

@@ -1,8 +1,8 @@
 import ImageSlider from "../../Component/ImageSlider"
-import RegisterCard from "../../Component/StudentAuth/RegisterCard"
+import RegisterCard from "../../Component/InstructorAuth/RegisterCard"
 import { studentAuthImgArray } from "../../data/imageArray"
 
-function StudentRegister() {
+function InstructorRegister() {
     const imageArray = studentAuthImgArray
 
   return (
@@ -19,4 +19,4 @@ function StudentRegister() {
   )
 }
 
-export default StudentRegister
+export default InstructorRegister
