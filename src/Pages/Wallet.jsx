@@ -13,7 +13,7 @@ function Wallet({ setSelectedCourse }) {
   const navigate = useNavigate()
   const location = useLocation()
   const { user } = useUserStore()
-    const [ balance, setBalance ] = useState()
+    const [ balance, setBalance ] = useState(0)
     const [ transactionnHistroy, setTransactionHistroy ] = useState([])
 
 
