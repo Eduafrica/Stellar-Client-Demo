@@ -13,7 +13,7 @@ import useUserStore from '../../store/userStore';
 function RegisterCard() {
   const { setUser } = useUserStore();
   const [formData, setFormData] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -42,7 +42,9 @@ function RegisterCard() {
         notify('success', res.message);
         //store user data here
         setUser(res.data);
-        navigate('/');
+        setTimeout(() => {
+            navigate('/instructor');
+        }, 3000)
       } else {
         notify('error', res.message || 'Unable to register account');
       }

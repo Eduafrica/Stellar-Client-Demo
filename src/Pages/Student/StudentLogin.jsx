@@ -7,7 +7,7 @@ function StudentLogin() {
 
   return (
     <div className="w-screen h-screen flex items-start">
-        <div className="flex flex-1 items-center justify-center h-full bg-primary">
+        <div className="flex flex-1 items-center justify-center h-full bg-primary max-phone:hidden">
             <ImageSlider imageArray={imageArray} />
         </div>
 

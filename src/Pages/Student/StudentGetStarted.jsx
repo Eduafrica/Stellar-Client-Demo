@@ -13,7 +13,7 @@ function StudentGetStarted() {
   ];
   return (
     <div className="w-screen h-screen flex items-start">
-      <div className="flex flex-1 items-center justify-center h-full bg-primary relative">
+      <div className="flex flex-1 items-center justify-center h-full bg-primary relative max-phone:hidden">
         <ImageSlider imageArray={imageArray} />
 
         {/**SLIDER */}

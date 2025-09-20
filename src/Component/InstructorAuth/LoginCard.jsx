@@ -13,7 +13,7 @@ import LoadingPage from '../Helpers/LoadingPage';
 function LoginCard() {
   const { setUser } = useUserStore();
   const [formData, setFormData] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -41,7 +41,9 @@ function LoginCard() {
         notify('success', res.message);
         //store user data here
         setUser(res.data);
-        navigate('/');
+        setTimeout(() => {
+            navigate('/instructor');
+        }, 3000)
       } else {
         notify('error', res.message || 'Unable to login account');
       }

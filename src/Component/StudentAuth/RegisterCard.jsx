@@ -13,7 +13,7 @@ import useUserStore from '../../store/userStore';
 function RegisterCard() {
   const { setUser } = useUserStore();
   const [formData, setFormData] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 

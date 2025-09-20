@@ -34,12 +34,15 @@ function Navbar() {
       if (res.success) {
         notify('suceess', res.message);
         clearUser();
+        setMobileMenuOpen(false)
         setTimeout(() => {
           navigate('/');
         }, 3000);
       } else {
-        notify('error', res.message || 'Unable to signout user');
+        //notify('error', res.message || 'Unable to signout user');
         clearUser();
+        setMobileMenuOpen(false)
+        navigate('/');
       }
     } catch (error) {
     } finally {
@@ -103,7 +106,11 @@ function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <div className="">Hello, {user?.displayName || user?.name}</div>
             <div onClick={handleLogout} className="cursor-pointer">
-              <AiOutlineLogout className="text-[24px]" />
+              { loading ? (
+                <p>Logging Out...</p>
+              ) : (
+                <AiOutlineLogout className="text-[24px]" />
+              ) }
             </div>
           </div>
         ) : (
@@ -143,7 +150,7 @@ function Navbar() {
                   className="cursor-pointer flex items-center gap-2"
                 >
                   <AiOutlineLogout className="text-[24px]" />
-                  <span>Logout</span>
+                  <span>{ loading ? 'Logging out....' : 'Logout'}</span>
                 </div>
               </div>
             ) : (

@@ -48,8 +48,8 @@ function Wallet({ setSelectedCourse }) {
   const { data: dataHistroy, isFetching: isFetchingHistroy  } = useFetchWalletStellarTransactionHistroy()
   useEffect(() => {
       if(dataHistroy) {
-          setTransactionHistroy(dataHistroy?.data?.records)
-          console.log('dataHistroydataHistroy', dataHistroy?.data?.records)
+            setTransactionHistroy(dataHistroy?.data)
+            //console.log('dataHistroydataHistroy', dataHistroy?.data)
     }
   }, [dataHistroy])
 
@@ -158,6 +158,7 @@ function Wallet({ setSelectedCourse }) {
                                     </th>
                                     <th className="p-3 font-medium">Type</th>
                                     <th className="p-3 font-medium">Amount</th>
+                                    <th className="p-3 font-medium">Fee Charged</th>
                                     <th className="p-3 font-medium">Asset type</th>
                                     <th className="p-3 font-medium">
                                     Receiver <FaArrowUpLong className="inline" />
@@ -182,10 +183,17 @@ function Wallet({ setSelectedCourse }) {
                                     <td className="p-3">{formatDate(tx?.created_at)}</td>
                                     <td className="p-3">{tx.type}</td>
                                     <td className="p-3">
-                                        {tx?.amount?.toLocaleString()} xlm
+                                        {
+                                            tx.type === 'create_account' ? (
+                                                tx?.starting_balance?.toLocaleString()
+                                            ) : (
+                                                tx?.amount?.toLocaleString()
+                                            )
+                                        } xlm
                                     </td>
+                                    <td className="p-3">{tx?.fee_charged ? (parseFloat(tx.fee_charged) / 1e7).toFixed(5) : null} xlm</td>
                                     <td className="p-3">{tx?.asset_type}</td>
-                                    <td className="p-3">{truncateKey(tx?.to)}</td>
+                                    <td className="p-3">{truncateKey(tx?.to || tx?.account)}</td>
                                     <td className="p-3">
                                         <span
                                         className={`px-2 py-1 rounded-full border text-xs font-medium ${statusColor(
@@ -196,7 +204,7 @@ function Wallet({ setSelectedCourse }) {
                                         </span>
                                     </td>
                                     <td className="p-3">
-                                        <a target='_blank' href={tx?._links?.transaction.href} className="btn py-2">View</a>
+                                        <a target='_blank' href={`https://stellar.expert/explorer/testnet/tx/${tx?.transaction_hash}`} className="btn py-2">View</a>
                                     </td>
                                     </tr>
                                 ))}
